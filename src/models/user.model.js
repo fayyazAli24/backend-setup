@@ -7,17 +7,19 @@ var dbConn = require('./../../config/db.config');
         this.email          = user.email;
         this.password      = user.password;
         this.created_at     = new Date();
-        this.user_id        = generateUserId();
+
+        // this.user_id        =user.id;
+        // this.user_id        = generateUserId();
 
     };
 
-    var currentUserId = 3; // Assuming the initial user ID is 1
+//     var currentUserId = 30; // Assuming the initial user ID is 1
 
-function generateUserId() {
-  var userId = currentUserId;
-  currentUserId++; // Increment the counter for the next user
-  return userId;
-}
+// function generateUserId() {
+//   var userId = currentUserId;
+//   currentUserId++; // Increment the counter for the next user
+//   return userId;
+// }
 
 User.create = function (newUser, result) {    
     dbConn.query("INSERT INTO user set ?", newUser, function (err, res) {
@@ -32,7 +34,7 @@ User.create = function (newUser, result) {
     });           
 };
 User.findById = function (id, result) {
-    dbConn.query("Select * from employees where user_id = ? ", id, function (err, res) {             
+    dbConn.query("Select * from user where user_id = ? ", id, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);

@@ -14,7 +14,7 @@ exports.findAll = function(req, res) {
 
 
 exports.create = function(req, res) {
-    const new_notes = new User(req.body);
+    const new_notes = new Notes(req.body);
 
     //handles null error 
    if(req.body.constructor === Object && Object.keys(req.body).length === 0){
